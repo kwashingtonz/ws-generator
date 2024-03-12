@@ -1,0 +1,18 @@
+{
+    "server": {
+      "port": "9090",
+      "ip": "127.0.0.1"
+    },
+    "db": {
+      "host": "127.0.0.1",
+      "userName": "root",
+      "password": "kaliya234",
+      "db": "",
+      "port": "3306"
+    },
+    "jwtSecret": "4658sfds@6798gs",
+    "apiKey":"HC0#5ylKW5677#GhRK@s",
+    "ms": {
+      "be": "http://127.0.0.1"
+    }
+}
