@@ -6,6 +6,8 @@ export class AppConfigurationsDto {
   private password: string;
   private dataBase: string;
   private dataBasePort: number;
+
+  private apiKey: string;
  
   //micro service
   private beServicePath: string;
@@ -64,6 +66,14 @@ export class AppConfigurationsDto {
 
   public setDataBasePort(dataBasePort: number): void {
       this.dataBasePort = dataBasePort;
+  }
+
+  public getApiKey(): string {
+    return this.apiKey;
+  }
+
+  public setApiKey(apiKey: string): void {
+    this.apiKey = apiKey;
   }
 
   public getBeServicePath(): string {

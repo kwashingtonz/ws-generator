@@ -15,6 +15,8 @@ export class EnvironmentConfiguration {
     let dataBasePort: any = process.env.db_port;
     appConfig.setDataBasePort(dataBasePort || config.get("db.port"));
 
+    appConfig.setApiKey(process.env.apiKey || config.get("apiKey"));
+
     // micro service
     appConfig.setBeServicePath(process.env.ms_be || config.get("ms.be"));
 
