@@ -71,6 +71,7 @@ export class DataGeneratorServiceImpl implements DataGeneratorService {
       const humidity = Math.random() * (100 - 50) + 50; // Humidity between 50% and 100%
     
       return {
+        dateTime: new Date(),
         temperature: temperature.toFixed(2),
         pressure: pressure.toFixed(2),
         humidity: humidity.toFixed(2)
@@ -86,8 +87,9 @@ export class DataGeneratorServiceImpl implements DataGeneratorService {
         const url = appConfig.getBeServicePath() + HttpMSServicePath.saveWeatherData;
         
         let sendingData = {
+          countryId: 1,
           districtId: district.id,
-          districtName: district.name,
+          weatherStationId: district.id,
           ...weatherData
         }
     
