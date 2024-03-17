@@ -9,10 +9,9 @@ import { CronJob } from 'cron';
 
 const environmentConfiguration = new EnvironmentConfiguration();
 const appConfig = environmentConfiguration.readAppConfiguration();
+const microService: MicroService = new MicroServiceHttp();
 
 export class DataGeneratorServiceImpl implements DataGeneratorService {
-
-  microService: MicroService = new MicroServiceHttp();
 
   async startDataGenerator(): Promise<void> {
     try {
@@ -51,10 +50,10 @@ export class DataGeneratorServiceImpl implements DataGeneratorService {
             const promises = districts.map(district => sendWeatherData(district));
             Promise.all(promises)
             .then(() => {
-                console.log('Weather data sent for all districts.');
+                console.log('Weather data sent to the api for all districts.');
             })
             .catch(error => {
-                console.error('Error sending weather data:', error.message);
+                console.error('Internal Server Error sending weather data:', error.message);
             });
         });
         
@@ -92,7 +91,7 @@ export class DataGeneratorServiceImpl implements DataGeneratorService {
           ...weatherData
         }
     
-        let response: AxiosResponse = await this.microService.call(url, "POST", sendingData, {
+        let response: AxiosResponse = await microService.call(url, "POST", sendingData, {
             // Authorization: `Bearer ${token}`,
         });
 
@@ -105,14 +104,15 @@ export class DataGeneratorServiceImpl implements DataGeneratorService {
                 console.log(`Weather data saving not successful for ${district.name}`);
             }
         }else{
-            console.error(`API server error`);
+            console.error(`Error occured in sending`);
         }
     
       } catch (error) {
-        console.error(error.message);
+        console.error(`External error : `, error.message);
       }
     }
   }
+  
 }
   
 
