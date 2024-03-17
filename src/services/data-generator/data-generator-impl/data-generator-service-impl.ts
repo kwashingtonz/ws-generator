@@ -92,7 +92,7 @@ export class DataGeneratorServiceImpl implements DataGeneratorService {
         }
     
         let response: AxiosResponse = await microService.call(url, "POST", sendingData, {
-            // Authorization: `Bearer ${token}`,
+            'x-api-key': appConfig.getApiKey()
         });
 
         if (response.status == 200) {

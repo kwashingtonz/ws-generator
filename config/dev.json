@@ -13,6 +13,6 @@
     "jwtSecret": "4658sfds@6798gs",
     "apiKey":"HC0#5ylVKHSdjn#GhRK@s",
     "ms": {
-      "be": "http://127.0.0.1"
+      "be": "http://127.0.0.1:9090"
     }
 }
