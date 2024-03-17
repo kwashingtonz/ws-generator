@@ -44,6 +44,12 @@ class AppConfigurationsDto {
     setDataBasePort(dataBasePort) {
         this.dataBasePort = dataBasePort;
     }
+    getApiKey() {
+        return this.apiKey;
+    }
+    setApiKey(apiKey) {
+        this.apiKey = apiKey;
+    }
     getBeServicePath() {
         return this.beServicePath;
     }

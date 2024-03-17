@@ -26,13 +26,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.readAppConfiguration = exports.NodeApplication = void 0;
+exports.startDataGenerator = exports.readAppConfiguration = exports.NodeApplication = void 0;
 const express_1 = __importDefault(require("express"));
 const http = __importStar(require("http"));
 const environment_configuration_1 = require("../configuration/environment-configuration");
 const http_log_configuration_1 = __importDefault(require("../configuration/http-log-configuration"));
 const cors_1 = __importDefault(require("cors"));
 const exception_middleware_1 = __importDefault(require("../middleware/exception-middleware"));
+const data_generator_service_impl_1 = require("../services/data-generator/data-generator-impl/data-generator-service-impl");
 /**
  * main application configuration
  * set up db , loggers , cors and etc
@@ -53,6 +54,8 @@ function NodeApplication(constructor) {
     app.listen(port);
     // call prototype method
     constructor.prototype.run(port);
+    //starting data generator
+    startDataGenerator();
 }
 exports.NodeApplication = NodeApplication;
 function readAppConfiguration() {
@@ -61,3 +64,8 @@ function readAppConfiguration() {
     return appConfigurationDto;
 }
 exports.readAppConfiguration = readAppConfiguration;
+function startDataGenerator() {
+    let dataGen = new data_generator_service_impl_1.DataGeneratorServiceImpl();
+    dataGen.startDataGenerator();
+}
+exports.startDataGenerator = startDataGenerator;
