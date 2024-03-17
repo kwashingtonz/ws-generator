@@ -7,6 +7,8 @@ import morganMiddleware from "../configuration/http-log-configuration";
 import cors from "cors";
 import errorHandlerMiddleware from "../middleware/exception-middleware";
 import fs from "fs";
+import { DataGeneratorServiceImpl } from "../services/data-generator/data-generator-impl/data-generator-service-impl";
+import { DataGeneratorService } from "../services/data-generator/data-generator-service";
 
 /**
  * main application configuration
@@ -33,10 +35,18 @@ export function NodeApplication<T extends { new(...args: any[]): {} }>(construct
 
   // call prototype method
   constructor.prototype.run(port);
+  
+  //starting data generator
+  startDataGenerator();
 }
 
 export function readAppConfiguration(): AppConfigurationsDto {
   let configurationReader: EnvironmentConfiguration = new EnvironmentConfiguration();
   let appConfigurationDto: AppConfigurationsDto = configurationReader.readAppConfiguration();
   return appConfigurationDto;
+}
+
+export function startDataGenerator(): void {
+  let dataGen: DataGeneratorService = new DataGeneratorServiceImpl()
+  dataGen.startDataGenerator();
 }
