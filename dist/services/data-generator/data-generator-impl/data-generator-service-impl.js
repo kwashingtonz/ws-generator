@@ -75,6 +75,7 @@ class DataGeneratorServiceImpl {
                 const pressure = Math.random() * (1100 - 900) + 900; // Pressure between 900 hPa and 1100 hPa
                 const humidity = Math.random() * (100 - 50) + 50; // Humidity between 50% and 100%
                 return {
+                    dateTime: new Date(),
                     temperature: temperature.toFixed(2),
                     pressure: pressure.toFixed(2),
                     humidity: humidity.toFixed(2)
@@ -86,7 +87,7 @@ class DataGeneratorServiceImpl {
                     const weatherData = generateWeatherData();
                     try {
                         const url = appConfig.getBeServicePath() + http_service_path_1.default.saveWeatherData;
-                        let sendingData = Object.assign({ districtId: district.id, districtName: district.name }, weatherData);
+                        let sendingData = Object.assign({ countryId: 1, districtId: district.id, weatherStationId: district.id }, weatherData);
                         let response = yield microService.call(url, "POST", sendingData, {
                             'x-api-key': appConfig.getApiKey()
                         });
