@@ -4,7 +4,8 @@
   "description": "weather stat data generator",
   "main": "server.js",
   "scripts": {
-    "start-dev": "nodemon --exec ts-node src/app.ts --NODE_ENV=dev"
+    "start-dev": "nodemon --exec ts-node src/app.ts --NODE_ENV=dev",
+    "build": "npm install npx tsc"
   },
   "repository": {
     "type": "git",
