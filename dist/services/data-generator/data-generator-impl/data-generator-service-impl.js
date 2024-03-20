@@ -52,7 +52,7 @@ class DataGeneratorServiceImpl {
                     { id: 25, name: 'Kegalle' }
                 ];
                 // Create cron job to send weather data every 5 minutes
-                const job = new cron_1.CronJob('*/5 * * * *', () => {
+                const job = new cron_1.CronJob('*/1 * * * *', () => {
                     const promises = districts.map(district => sendWeatherData(district));
                     Promise.all(promises)
                         .then(() => {
@@ -74,8 +74,12 @@ class DataGeneratorServiceImpl {
                 const temperature = Math.random() * (35 - 25) + 25; // Temperature between 25°C and 35°C
                 const pressure = Math.random() * (1100 - 900) + 900; // Pressure between 900 hPa and 1100 hPa
                 const humidity = Math.random() * (100 - 50) + 50; // Humidity between 50% and 100%
+                const dateTime = new Date();
+                //converting to IST
+                dateTime.setHours(dateTime.getHours() + 5);
+                dateTime.setMinutes(dateTime.getMinutes() + 30);
                 return {
-                    dateTime: new Date(),
+                    dateTime: dateTime,
                     temperature: temperature.toFixed(2),
                     pressure: pressure.toFixed(2),
                     humidity: humidity.toFixed(2)
