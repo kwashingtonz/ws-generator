@@ -26,4 +26,4 @@ jobs:
       - name: Delete old container
         run: docker rm -f weather-generator.container
       - name: Run docker container
-        run: docker run -d -p 9090:9090 --name weather-generator.container kalinduwashington/weather-generator:latest
+        run: docker run -d -p 9095:9095 --name weather-generator.container kalinduwashington/weather-generator:latest
