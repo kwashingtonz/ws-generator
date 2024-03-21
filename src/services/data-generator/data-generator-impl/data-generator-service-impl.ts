@@ -46,7 +46,7 @@ export class DataGeneratorServiceImpl implements DataGeneratorService {
           
         
         // Create cron job to send weather data every 5 minutes
-        const job = new CronJob('*/1 * * * *', () => {
+        const job = new CronJob('*/5 * * * *', () => {
             const promises = districts.map(district => sendWeatherData(district));
             Promise.all(promises)
             .then(() => {

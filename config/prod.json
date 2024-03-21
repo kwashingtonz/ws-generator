@@ -1,0 +1,18 @@
+{
+  "server": {
+    "port": "9095",
+    "ip": "127.0.0.1"
+  },
+  "db": {
+    "host": "127.0.0.1",
+    "userName": "root",
+    "password": "kaliya234",
+    "db": "",
+    "port": "3306"
+  },
+  "jwtSecret": "4658sfds@6798gs",
+  "apiKey":"HC0#5ylVKHSdjn#GhRK@s",
+  "ms": {
+    "be": "https://back.weatherstat.live"
+  }
+}

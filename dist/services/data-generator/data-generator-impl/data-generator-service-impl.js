@@ -52,7 +52,7 @@ class DataGeneratorServiceImpl {
                     { id: 25, name: 'Kegalle' }
                 ];
                 // Create cron job to send weather data every 5 minutes
-                const job = new cron_1.CronJob('*/1 * * * *', () => {
+                const job = new cron_1.CronJob('*/5 * * * *', () => {
                     const promises = districts.map(district => sendWeatherData(district));
                     Promise.all(promises)
                         .then(() => {
